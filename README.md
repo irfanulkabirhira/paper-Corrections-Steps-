@@ -1,24 +1,82 @@
-# paper-Corrections-Steps-
-it's only made for specific Task base Correction
+i have submitted my paper on "Discover Artificial Intelligence "
+Paper Title: "Privacy Preserving and Explainable Federated Learning for Brain Tumor MRI Classification Using LiteGAN FedNet"
 
-i have submitted my paper on "Conference Name: Software and Data Engineering: 35th International Conference, SEDE 2026, San Francisco, CA, USA, October 19-20, 2026, Proceedings
-Paper Title: Boundary-Aware Hybrid 3D CNN-Transformer Network for Multi-Modal Brain Tumor Segmentation
+and i have attached the complete Overleaf file of my paper :  at fisrtv read my entire paper from the overleaf, and then you will help me out to fix the corrections below corrected after : 
+---------------------------------------------------------------------------------------------------
 
-and i have attached the complete overleaf file of my paper :  at fisrt read my entire paper , from the overleaf , and then , you will help me out to fix this below corrected after : 
---------
-Response to PC Chair’s Comments (Paper ID: 12)
-Dear TPC Chair.
-We are very grateful to the reviewers and editorial board members for the valuable comments to improve the quality of the paper. Based on the insightful comments we received, we have carefully revised our paper. We believe that the quality of the paper has improved. This document describes how we have addressed each comment. Please note that the responses are written in italic font in order to distinguish them from the comments. We hope that our revision has improved the paper to a level of your satisfaction. Yours sincerely, Authors: Anichur Rahman, Md. Kowsar Ahmed, MD IRFANUL KABIR Hira, Charan Gudla, Md Shohel Rana (CA)
-Response to PC Chair Comments Good motivation and a sensible architecture (CNN + attention + Transformer bottleneck + boundary loss), but the results section has some inconsistencies that need fixing before this is ready. Main issues Comment 1: F1 = Dice in every table — Tables 1–3 report identical F1 and Dice values row for row. Please clarify if F1 is actually computed separately; if not, drop the duplicate column. Response: We sincerely thank the TPC chair for this valuable suggestion………….. Comment 2: Dice/IoU don't match up. Standard relation is Dice = 2·IoU/(1+IoU). Table 3's IoU (0.7849) implies Dice ≈0.88, not the reported 0.8742. Worth double-checking how these were computed. Response: We sincerely thank the TPC chair for this valuable suggestion…………..
-Comment 3: Full model underperforms its own ablation. In Table 1, "CNN+Transformer" (Dice 0.9105) beats the full "Proposed Model" (Dice 0.8769) at the same 50 epochs — this seems to undercut the paper's claim that boundary loss + attention help. Needs an explanation. Response: We sincerely thank the TPC chair for this valuable suggestion…………..
-Comment 4: Ref [17] is cited as "nnMamba (2024)" but the bibliography entry for [17] is an unrelated quantum physics paper — likely a citation/reference-list error. Response: We are thankful to the ………..
-Comment 5: Validation Dice (0.9151) vs. final Dice (0.8742) — worth clarifying whether "final" is a true held-out test set or just a later epoch on the same validation split, since the 80:20 split described seems to only cover train/val. Response: We are thankful to the ………..
-Comment 6: Fig. 2: text says a shared/common CNN encoder is used, but the diagram appears to show separate per-modality CNN stacks — figure and text don't clearly agree here. Worth clarifying or redrawing. Response: We are thankful to the ………..
-"this part has to be correction , and gave from the journal/conferecne , next i will provide you the entire overlreaf paper , and the code , so that it might be easier for you to , solve this correction  are you ready ???"
+Reviewer comments
 
-"Up to comment 6 you will help me out to fix "
 
-as well as i have provided you  the compete coding section which is ipynb file , then i will let you porvide the entire overleaf , at first undestand the coding section from screcth ...
+Reviewer 1
+
+This is a very good, well-executed, and timely manuscript that makes a clear and valuable contribution. Having addressed the suggestions below, this paper could be a strong accept.
+
+The manuscript presents LiteGAN-FedNet, a highly effective and communication-efficient federated learning pipeline designed for multi-class brain tumor MRI classification. The core contribution is a client-side optimization sequence that performs conditional GAN-based data augmentation directly within the latent feature space of a ResNet-18 backbone, paired with PCA compression to reduce the transmitted parameter volume by 80.5 percent. The integration of a multi-perspective explainability framework combining Grad-CAM, SHAP, and LIME, along with robust empirical performance on the Figshare and Mendeley benchmarks, represents a strong and clinically valuable advance.
+
+1. The authors should add a paragraph in Section 3.5 clarifying the specific layers of the ResNet-18 backbone that were fine-tuned versus those kept frozen, and discuss how the pre-trained ImageNet weights are robust enough to capture distinct tumor morphology before the cGAN training begins.
+
+2. Part A. In Section 3.7 and Algorithm 1, the manuscript states that each client independently fits PCA on their local augmented features to compute a client-specific projection matrix.
+Part B. Because PCA is highly data-dependent, the local principal components (coordinate axes) generated on different client datasets will represent entirely different orthogonal bases, meaning that training local MLPs on these disparate feature spaces and aggregating their parameters via standard FedAvg is mathematically inconsistent.
+Part C. To resolve this concern, the authors should add a detailed explanatory paragraph in Section 3.7 clarifying whether a global projection matrix was computed and distributed, or explicitly discuss how the framework handles coordinate misalignment during aggregation.
+
+3. The authors should add a brief explanatory paragraph in Section 4.7 explaining how the quality and diversity of the cGAN-generated latent features were verified, as traditional image-based metrics like FID cannot be applied directly to 512-dimensional vector spaces, and discuss if any feature-space collapse was observed during local client training.
+
+4. Some relevant citations are included but several highly relevant are missing: A. Data Storage, Cloud Usage and Artificial Intelligence Pipeline. Artificial Intelligence in Cardiothoracic Imaging (2022). B. Foundation AI Model for Medical Image Segmentation. arXiv preprint (2024). C. ChatGPT in medical publications. Radiology (2023). D. A survey for large language models in biomedicine. arXiv preprint (2024). E. Predictable LLM Serving on GPU Clusters. arXiv preprint (2025). F. The Trust Fabric: Decentralized Interoperability and Economic Coordination for the Agentic Web. arXiv preprint (2025). G. The hidden adversarial vulnerabilities of medical federated learning. arXiv preprint (2023). H. Structured Robustness for Distribution Shifts. ICLR (2025). I. GPU Tail Latency Diagnosis for Serverless and HPC Workloads using eBPF. Proceedings of the 11th International Workshop on Serverless Computing (2025). J. Elastic MIG Reconfiguration with PCIe-Aware Placement for Multi-Tenant GPUs. Proceedings of the 11th International Workshop on Serverless Computing (2025). K. Scaling Test-Time Compute Can Outperform Larger Architectures in Computer Vision. CVPR (2025). L. Host-Side Telemetry for Performance Diagnosis in Cloud and HPC GPU Infrastructure. arXiv preprint (2025). M. Weight-space noise for privacy-robustness trade-offs in federated learning. Neural Computing and Applications (2025). N. Fed-Safe: Securing federated learning in healthcare against adversarial attacks. arXiv preprint (2023)
+
+
+5. Part A. The multi-level explainability framework combines Grad-CAM to visualize ResNet-18 features, LIME for raw image perturbations, and SHAP to attribute importance to the PCA-compressed 100-dimensional components fed to the MLP classifier.
+Part B. Because these three explainability techniques operate on entirely different representational domains (spatial pixels, deep convolutional channels, and abstract linear projection components), there is an unaddressed representational mismatch that makes it conceptually difficult to verify if they provide consistent, non-contradictory clinical evidence.
+Part C. The authors should add a paragraph in Section 5 discussing this representational divergence among the XAI methods, and clarify how a clinician can practically map a high-attribution SHAP principal component back to the anatomical visual explanations provided by LIME and Grad-CAM.
+
+
+Reviewer 2
+
+Comment #1: Literature Review
+The novelty claim is currently broader than what the literature review establishes. The manuscript states that LiteGAN-FedNet differs from existing FL+GAN frameworks through client-side feature-space augmentation, PCA compression, and explainability, but the related work mainly reviews centralized GAN-based synthesis, general MRI classification, and some neuroimaging studies. The review does not sufficiently analyze prior federated medical imaging works that address class imbalance, communication reduction, privacy protection, feature-level augmentation, or federated GAN-based learning. As a result, the reader is not given enough evidence to understand which exact gap the proposed method fills.
+Suggested revision: The literature review should be reorganized around the claimed contributions: federated brain tumor classification, GAN-based augmentation in FL, communication-efficient FL/compression methods, privacy mechanisms in FL, and XAI for MRI diagnosis. For each group, the authors should explain what existing methods do, what they do not address, and how LiteGAN-FedNet differs. In particular, any methods listed later as competitors, especially GAN- or FL-related approaches, should be discussed in the related work rather than appearing only in the comparison table.
+
+Comment #2: Methodology
+The PCA-based federated learning mechanism is not methodologically clear. The manuscript states that each client fits PCA locally on its augmented feature set, but if each client learns its own PCA basis, the resulting 100-dimensional representations are not guaranteed to share the same coordinate system. Aggregating MLP weights through FedAvg over client-specific PCA spaces can be invalid unless the PCA basis is shared or aligned. In addition, the manuscript states that PCA reduces transmitted feature volume or parameter volume, but FedAvg usually transmits model updates, not feature embeddings. It is therefore unclear what exactly is being communicated and how the 80.5% reduction is calculated.
+Suggested revision: The authors should explicitly define whether PCA is local, global, or shared across clients. If PCA is local, they must explain how PCA component ordering, signs, and coordinate systems are aligned before FedAvg aggregation. If a shared PCA is used, they should explain how it is obtained without violating privacy, for example through secure aggregation of covariance statistics or a training-only public/shared basis. The communication analysis should be rewritten in terms of actual transmitted quantities, such as number of parameters, bytes per round, total communication over 50 rounds, and whether features or model updates are transmitted.
+
+Comment #3: Methodology
+The cGAN component is central to the proposed contribution, but its training procedure is insufficiently specified and partly inconsistent. Section 3.6 describes local cGAN training, Table 2 only reports latent dimension and synthetic embeddings per class, and Algorithm 1 appears to train the cGAN once before federated training. However, the text later states that LiteGAN-FedNet embeds cGAN augmentation within each federated round. These alternatives have different computational costs and different effects on convergence. The discriminator/generator layer widths, activation details, training epochs, gradient penalty coefficient, discriminator-to-generator update ratio, stopping criteria, and class-balancing rule are not reported.
+Suggested revision: The authors should provide a complete cGAN specification, including generator/discriminator architectures, hidden dimensions, optimizer settings, WGAN-GP coefficient, number of cGAN epochs, update ratio, latent sampling strategy, and exact rule for generating synthetic samples per class. They should also state whether the cGAN is trained once before FL, periodically, or in every communication round. If synthetic features are generated every round, the added computation should be measured. If they are generated once, the text and algorithm should be corrected accordingly.
+
+Comment #4: Methodology
+The privacy-preserving claim is not fully supported by the described methodology. The manuscript states that secure aggregation is used and differential privacy is optional, but it does not define a threat model, does not report an implemented privacy budget, and does not provide clipping norms, noise multipliers, ε, δ, or utility trade-offs. Also, feature embeddings and synthetic feature generation can still carry privacy risks, including reconstruction, membership inference, or memorization by the local generator. Simply avoiding raw image sharing is not sufficient to claim strong privacy preservation.
+Suggested revision: The authors should separate what is actually implemented from what is only optional. If differential privacy is implemented, they should report the privacy accountant, ε/δ values, clipping strategy, noise scale, and performance under DP. If DP is not implemented, it should not be used to support the main privacy claim. The authors should also define the assumed adversary and discuss privacy risks specific to feature embeddings and GAN-generated representations. At minimum, the manuscript should revise the language from “privacy-preserving” to “raw-data-local federated learning” unless formal privacy protection is demonstrated.
+
+Comment #5: Experiments
+The dataset description is too limited for reproducibility and may contain ambiguity regarding modality and class composition. The manuscript states that both datasets contain T1 and T2 weighted axial MRI images and four classes, including no-tumor, but the exact source structure, number of images, patient/sample counts, class distribution, slice-level versus patient-level organization, and modality composition are not clearly reported. Without this information, it is difficult to assess whether the splits are clinically meaningful or whether the reported performance may be affected by dataset overlap, duplicate slices, or overly simple public benchmark characteristics.
+Suggested revision: The authors should provide a detailed dataset description for each dataset, including total images, number of patients if available, number of samples per class, imaging modality, acquisition characteristics, and whether the data are slice-level or patient-level. The train/test split should be described at the patient level whenever patient identifiers are available. If only image-level splitting is possible, the authors should explicitly acknowledge the risk of leakage or near-duplicate slices and provide a de-duplication or similarity-check procedure.
+
+Comment #6: Experiments
+The non-IID federated setup is under-specified and repeated in several places without quantitative definition. The manuscript says that client distributions are intentionally non-IID or weakly non-IID, but it does not provide the class counts per client, the sampling method, the heterogeneity parameter, or whether the same client partition is used across random seeds. Since the paper’s motivation depends heavily on non-IID class imbalance, this missing detail prevents the reader from judging whether the experimental setting is realistic or sufficiently challenging.
+Suggested revision: The authors should report the exact class distribution for each of the five clients for both datasets. They should state whether the partition was created using Dirichlet sampling, fixed class-skew rules, quantity skew, label skew, or another method. The authors should also evaluate at least two levels of heterogeneity, such as IID, mild non-IID, and strong non-IID, to show whether LiteGAN-FedNet remains effective when client drift becomes more severe.
+
+Comment #7: Experiments
+The implementation details are not sufficient for reproduction. The manuscript mentions Python, PyTorch/TensorFlow, Flower, ImageDataGenerator, GPU RTX 3090, one random seed, and multiple random seeds, but it does not provide exact library versions, seed values, training times, code link, early stopping rules, learning-rate schedules, ResNet fine-tuning details, or computational cost of local cGAN training. The source code statement says “GitHub Repository” but does not provide an actual repository link.
+Suggested revision: The authors should provide a reproducibility checklist or appendix with exact software versions, hardware configuration, random seeds, data split files or split-generation scripts, optimizer settings for every module, ResNet fine-tuning schedule, MLP architecture details, cGAN training settings, and runtime/memory requirements per client. The GitHub repository should be provided as a real link or removed until available. The manuscript should also resolve the inconsistency between “same random seed” and “multiple random seeds.”
+
+Comment #8: Results
+The interpretability and statistical analyses are not rigorous enough to support the strength of the claims. The Grad-CAM and LIME figures are interpreted as focusing on tumor-relevant regions, but no radiologist review, tumor masks, localization metric, or failure-case analysis is provided. SHAP is applied to PCA components, but the clinical meaning of individual principal components is not directly interpretable without mapping them back to image or feature patterns. For McNemar’s test, the manuscript reports only p-value thresholds and does not provide the paired disagreement counts, exact p-values, baseline predictions, or correction for multiple comparisons.
+Suggested revision: The authors should add quantitative or expert-supported XAI validation. For example, if masks or approximate tumor regions are available, report localization overlap between Grad-CAM/LIME and tumor areas; otherwise, include blinded radiologist assessment or at least representative failure cases where explanations are misleading. For SHAP, the authors should avoid claiming direct clinical meaning for PCA components unless they provide a mapping or analysis connecting those components to interpretable image features. For McNemar’s test, they should report the exact paired contingency tables, exact p-values, baseline method details, and whether the test was performed separately for each dataset and each seed.''
+
+
+Comment #9: Results
+The ablation study does not fully isolate the contribution of each component. The “Full LiteGAN-FedNet” result improves substantially over “FL + PCA + cGAN,” but the stated additional components include explainability modules, which should not change classification accuracy if they are post-hoc. This creates uncertainty about what actually caused the final increase. The ablation is also not reported separately for Figshare and Mendeley, and no standard deviations or confidence intervals are given for each ablated variant.
+Suggested revision: The authors should restructure the ablation so that every performance change corresponds to a train-time component. Suggested variants include FL only, FL + PCA, FL + cGAN, FL + PCA + cGAN, FL + PCA + cGAN + secure aggregation, and FL + PCA + cGAN + DP if DP is actually implemented. XAI should be reported separately as interpretability analysis, not as a performance-improving component. Each ablation should be reported per dataset with mean ± standard deviation or confidence intervals over the same seeds.
+
+Comment #10: Reproducibility
+You have developed a new method. The authors should include a comprehensive appendix, regardless of whether the implementation code is released in other platforms like GitHub, etc. This appendix should present two clear tables: one summarizing all key experimental settings (e.g., hyperparameters, optimizer, learning rate schedule, epochs, batch size, weight decay, dropout, and other relevant training details), and another describing the hardware platforms used for experimentation, along with brief explanations. Such transparency improves reproducibility, facilitates future research, and helps advance the field.
+
+
+
+
+"Up to all comments you will help me out to fix "
+
+as well as i have provided you the complete coding section, which is  in ipynb file , then i will let you provide the entire Overleaf. First, at first undestand the coding section from screcth ...
 
 And listen 
 each of the correction provdided Correction proper, 
@@ -27,8 +85,8 @@ And also help me out to fix them in the correct place , as well as if anything n
 so that i find the exact place to correct !!! Start from comment  1 numeber then when it will be  you will let me know you are done with that number
 then you will move forward .... sequentially we will solve them out ...
 
-let me provide you how it should be : just for example to undestand from another paper 
--------
+let me provide you how it should be : just for example to understand from another paper 
+------------------------------
 Demo one : 
 ============
 Fix for Issue #1 & #2 — three separate edits in Overleaf
