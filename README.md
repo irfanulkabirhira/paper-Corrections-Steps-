@@ -1,3 +1,7 @@
+
+
+# 1st Step : 
+-----------------
 i have submitted my paper on "Discover Artificial Intelligence "
 Paper Title: "Privacy Preserving and Explainable Federated Learning for Brain Tumor MRI Classification Using LiteGAN FedNet"
 
@@ -176,3 +180,25 @@ Insert a new sentence immediately after it (before Let, / the \mathcal{E} equati
 It is important to distinguish between the two outputs the framework returns for each instance: a six-way category prediction $\hat{c}$, produced by the learned fusion classifier described in Section~\ref{sec:consistency_fusion}, and a binary consistency label $\hat{y}\in\{\text{CONSISTENT},\text{INCONSISTENT}\}$, produced by thresholding the scalar consistency score $S_{\mathrm{EMCR}}$. The per-class performance tables in Section~\ref{sec:Results and Discussion} report $\hat{c}$; the confidence-aware verification analysis (Section~\ref{sec:threshold_analysis}) reports $\hat{y}$.
 
 That's all three placements for #1/#2. Take your time applying them — let me know when you're done and we'll move to #3
+
+# 2nd Step : 
+----------
+Inorder to shift other AI Tool 
+==================================
+hey , listen i have fixed up to Comment#30  using other claude ai from another account  ,  
+do check my updated main.tex :   
+==============  
+Note 1 : the comment#15 and the comment#46 are same , that's i have solved the comment #46 
+
+note 2: in order to fixed comment #26 i delete the entire \subsection{Multi-Parameter Sensitivity and Regularisation Analysis} part , and 
+Added this below instead of it : 
+the place is : --
+main.tex, \section{Limitations and Future Work}, after the \noindent\textbf{Boundary and Calibration Losses Not Used in Training.}
+------------------------------------------
+\noindent\textbf{\rev{Removed Multi-Parameter Sensitivity Analysis.}}
+\rev{An earlier version of this manuscript included a multi-parameter sensitivity analysis (correlation structure and regularization sweep over coefficients $\beta_1$--$\beta_3$) that was not backed by any corresponding code or reproducible experiment in our implementation; it has been removed from this version. The loss weights actually used in this study are the fixed constants reported in Table~\ref{tab:hyperparameters} ($\lambda_1=\lambda_2=1.0$, $\lambda_3=\lambda_4=0$), not learned or swept coefficients. A genuine regularization-sensitivity study, if pursued, is identified as follow-up work.}
+
+and start from comment #31  and listen you will go one comment after one comment i mean 31-> 32--> 33-> ......etc
+
+
+
