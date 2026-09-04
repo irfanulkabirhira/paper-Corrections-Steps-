@@ -5,7 +5,7 @@
 i have submitted my paper on "Discover Artificial Intelligence "
 Paper Title: "Privacy Preserving and Explainable Federated Learning for Brain Tumor MRI Classification Using LiteGAN FedNet"
 
-and i have attached the complete Overleaf file of my paper :  at fisrtv read my entire paper from the overleaf, and then you will help me out to fix the corrections below corrected after : 
+and i have attached the complete Overleaf file of my paper :  at fisrt read my entire paper from the overleaf, and then you will help me out to fix the corrections below corrected after : 
 ---------------------------------------------------------------------------------------------------
 
 Reviewer comments
@@ -180,6 +180,13 @@ Insert a new sentence immediately after it (before Let, / the \mathcal{E} equati
 It is important to distinguish between the two outputs the framework returns for each instance: a six-way category prediction $\hat{c}$, produced by the learned fusion classifier described in Section~\ref{sec:consistency_fusion}, and a binary consistency label $\hat{y}\in\{\text{CONSISTENT},\text{INCONSISTENT}\}$, produced by thresholding the scalar consistency score $S_{\mathrm{EMCR}}$. The per-class performance tables in Section~\ref{sec:Results and Discussion} report $\hat{c}$; the confidence-aware verification analysis (Section~\ref{sec:threshold_analysis}) reports $\hat{y}$.
 
 That's all three placements for #1/#2. Take your time applying them — let me know when you're done and we'll move to #3
+
+
+
+
+i have attached this into the above of the main.tex : \newcommand{\rev}[1]{\textcolor{blue}{#1}}
+
+and Must , Use  with /rev in the Reviewer Comment 
 
 # 2nd Step : 
 ----------
